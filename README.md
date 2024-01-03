@@ -23,7 +23,7 @@ longPollingFunction.on("done", () => {
 
 ## usage
 
-Initialize the collector.  This will create a JSON file at ../temp/test_collector.json
+Initialize the collector.  This will create a JSON file at `../temp/test_collector.json`
 ```javascript
 const Collector = require("@ryanforever/collector")
 const collector = new Collector({
@@ -32,8 +32,24 @@ const collector = new Collector({
 })
 ````
 
+Push data into a collector
+```javascript
+// push an array of items in, using the spread operator.  same functionality as javascripts Array.prototype.push
+let arrayOfItems = ["apple", "orange", "banana", "pear"]
+collector.push("items", ...arrayOfItems)
 
+// push a single item
+collector.push("items", "strawberry")
+````
 
+Get data from collector
+```javascript
+// get a single collector
+let items = collector.get("items")
+
+// get all collectors
+let allCollectorData = collector.get()
+````
 
 ## methods
 ```javascript
