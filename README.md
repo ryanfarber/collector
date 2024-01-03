@@ -51,6 +51,8 @@ let items = collector.get("items")
 let allCollectorData = collector.get()
 ````
 
+---
+
 ## methods
 ```javascript
 collector.push("key", value) // will create a new key if not exist, and push data into it
