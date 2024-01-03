@@ -10,15 +10,14 @@ const collector = new Collector({
 })
 
 longPollingFunction.on("data", data => {
-	collector.push(data)
-
-	// if data is an array
-	collector.push(...data)
+	collector.push("items", data) // push data with a key and value
+	collector.push("items" ...data) // if data is an array
 })
 
 longPollingFunction.on("done", () => {
-	let result = collector.get()
+	let result = collector.get() // get 
 	console.log(result)
+	collector.delete() // delete the collector's json file
 })
 ```
 
