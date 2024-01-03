@@ -39,6 +39,8 @@ class Collector {
 	
 		// push data into a collector
 		this.push = function(key, ...data) {
+
+			if (arguments.length == 1) throw new Error(`you must specify a key for the collector, and a value to push into it\ni.e. collector.push("items", "apple")`)
 			let keypath = `data.${key}`
 			if (!this.has(key)) db.set(keypath, []).write()
 			let ts = new Date()

@@ -11,6 +11,8 @@ const collector = new Collector({
 // console.log(collector)
 
 let array = [1,2,3,56,2,67,7,235,34]
-collector.add("tests", ...array)
-collector.add("ex", ...array)
-collector.push("boopers", ...array)
+collector.push("testicles", 1)
+// collector.add("ex", ...array)
+// collector.push("boopers", ...array)
+
+console.log(collector.get())
