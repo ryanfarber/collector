@@ -4,7 +4,7 @@ const low = require("lowdb")
 const FileSync = require("lowdb/adapters/FileSync")
 const path = require("path")
 const fs = require("fs")
-const kindof = require("kind-of")
+// const kindof = require("kind-of")
 const Logger = require("@ryanforever/logger").v2
 const logger = new Logger("collector", {debug: false})
 
@@ -17,9 +17,12 @@ class Collector {
 
 		if (!config.savePath) throw new Error(`please input a filepath for where the collector should save to`)
 
-		this.name = config.name || `collector_${Date.now()}`
+		this.name = undefined
 		this.savePath = config.savePath
 		this.dbPath = undefined
+
+		if (config.name) this.name = `${config.name}_collector`
+		else this.name = `collector_${Date.now()}`
 		
 
 		if (!fs.existsSync(this.savePath)) fs.mkdirSync(this.savePath)
@@ -93,36 +96,5 @@ class Collector {
 }
 
 
-const collector = new Collector({
-	name: "test",
-	savePath: "./tmp"
-})
-
-
-// console.log(collector)
-
-let array = [1,2,3,56,2,67,7,235,34]
-collector.add("tests", ...array)
-collector.add("ex", ...array)
-collector.push("boopers", ...array)
-// collector.push("testa", 1)
-// console.log(collector)
-
-
-// console.log(collector.getAll())
-
-
-
-// collector.db.set("hey.booper", 2).write()
-
-
-// console.log(collector.getAll())
-
-// console.log(collector.counts())
-
-// collector.delete()
-
-// collector.clear("boopers")
-
-console.log(collector.counts)
+module.exports = Collector
 

@@ -1,0 +1,29 @@
+{
+  "name": "@ryanforever/collector",
+  "version": "1.0.0",
+  "description": "a collector with persistance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanfarber/collector.git"
+  },
+  "keywords": [
+    "collector",
+    "json",
+    "fs",
+    "persistant"
+  ],
+  "author": "ryan forever",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanfarber/collector/issues"
+  },
+  "homepage": "https://github.com/ryanfarber/collector#readme",
+  "dependencies": {
+    "@ryanforever/logger": "^5.0.4",
+    "lowdb": "^1.0.0"
+  }
+}
