@@ -1,7 +1,6 @@
 # collector
  
-
-A persistant collector, useful when making long requests for data.  This will continuously write data to a local JSON file, to persist, even in the event of network errors, or anything else that would normall cause you to loose the data in memory.
+A persistant collector, useful when making long polling requests for data.  This will continuously write data to a local JSON file, to persist, even in the event of network errors, or anything else that would normall cause you to loose the data in memory.
 
 ```javascript
 const Collector = require("@ryanforever/collector")
@@ -10,13 +9,32 @@ const collector = new Collector({
 	savePath: "../tmp"
 })
 
-let requests = [
-	axios.get("https://example.com/data/1").then(res => collector.push(res.data),
-	axios.get("https://example.com/data/2").then(res => collector.push(res.data),
-	axios.get("https://example.com/data/3").then(res => collector.push(res.data)
-]
+longPollingFunction.on("data", data => {
+	collector.push(data)
 
-let result = await Promise.all(requests)
+	// if data is an array
+	collector.push(...data)
+})
 
-console.log(collector.get())
+longPollingFunction.on("done", () => {
+	let result = collector.get()
+	console.log(result)
+})
+```
+
+
+## methods
+```javascript
+collector.push("key", value) // will create a new key if not exist, and push data into it
+collector.add("key", value) // alias for .push()
+
+collector.get("key") // get collector by key
+collector.get() // get all collector arrays
+
+collector.has("key") // returns true if key exists
+
+collector.clear("key") // clear a single collector array
+collector.clear() // clear all collector arrays
+
+collector.delete() // ⚠️ deletes the actual json file of the collector
 ```
