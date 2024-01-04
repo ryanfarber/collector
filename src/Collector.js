@@ -4,11 +4,7 @@ const low = require("lowdb")
 const FileSync = require("lowdb/adapters/FileSync")
 const path = require("path")
 const fs = require("fs")
-// const kindof = require("kind-of")
-const Logger = require("@ryanforever/logger").v2
-const logger = new Logger("collector", {debug: false})
-
-
+const logger = console
 
 
 
@@ -67,7 +63,7 @@ class Collector {
 
 		// clear one or all collectors
 		this.clear = function(key) {
-			if (!this.exists(key)) return logger.warn(`you are trying to clear key "${key}", but that does not exist`)
+			if (!this.exists(key)) return logger.warn(`WARNING you are trying to clear key "${key}", but that does not exist`)
 			if (key) db.set(keypath(key), []).write()
 			else db.set("data", {}).write()
 		}

@@ -1,6 +1,6 @@
 {
   "name": "@ryanforever/collector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a collector with persistance",
   "main": "index.js",
   "scripts": {
@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/ryanfarber/collector#readme",
   "dependencies": {
-    "@ryanforever/logger": "^5.0.4",
     "lowdb": "^1.0.0"
   },
   "files": [
     "src"
-  ]
+  ],
+  "devDependencies": {
+    "@ryanforever/logger": "^5.0.4"
+  }
 }
