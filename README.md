@@ -1,6 +1,6 @@
 # collector
  
-A persistant collector, useful when making long polling requests for data.  This will continuously write data to a local JSON file, to persist, even in the event of network errors, or anything else that would normall cause you to loose the data in memory.
+A persistant collector, useful when making long polling requests for data.  This will continuously write data to a local JSON file, to persist, even in the event of network errors, or anything else that would cause you to loose data if it was in-memory.
 
 ```javascript
 const Collector = require("@ryanforever/collector")
