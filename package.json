@@ -1,6 +1,6 @@
 {
   "name": "@ryanforever/collector",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a collector with persistance",
   "main": "index.js",
   "scripts": {
